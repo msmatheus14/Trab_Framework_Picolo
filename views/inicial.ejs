@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guerreiro NEWS</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+
+    
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">Guerreiro NEWS</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/guerreironews">Início</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/guerreironews/todas">Todas as Notícias</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    
+    <section class="bg-light py-5">
+        <div class="container">
+            <h1 class="display-4">Destaques de Hoje</h1>
+            <p class="lead">As notícias mais recentes e importantes do momento.</p>
+        </div>
+    </section>
+
+    
+    <section class="container my-5">
+        <div class="row">
+            
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <img src="https://preview.redd.it/w0gtusrrm2751.jpg?auto=webp&s=63acad28772f5546967625430d4881bc0b0de6f0" height="300px" width="200px" class="card-img-top" alt="Imagem da notícia 1">
+                    <div class="card-body">
+                        <h5 class="card-title"><%= news[0].titulo %></h5>
+                        <a href="/guerreironews/todas/<%=news[0].id%>" class="btn btn-primary">Leia mais</a>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <img src="https://sampi.net.br/dir-arquivo-imagem/2017/01/20170131153512_35925475.jpg" height="300px" width="200px" class="card-img-top" alt="Imagem da notícia 2">
+                    <div class="card-body">
+                        <h5 class="card-title"><%= news[1].titulo %></h5>
+                
+                        <a href="/guerreironews/todas/<%=news[1].id%>" class="btn btn-primary">Leia mais</a>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiA6m9_wFHNcssjfks30M83kV0xUKJrWQ6OKBqK8yawyfLgAD5LyWADLX2pneYECvIxNWsEgfAILM-yVfnpj8oSoaMhsFHKYjt3iIin7dFG_oK3-idZn3uLcuSr1dKkFIdPFZE7NO9k5QE/w1200-h630-p-k-no-nu/_Clientes+Insatisfeitos.jpg"  height="300px" width="200px" class="card-img-top" alt="Imagem da notícia 3">
+                    <div class="card-body">
+                        <h5 class="card-title"><%= news[2].titulo %></h5>
+                        <a href="/guerreironews/todas/<%=news[2].id%>" class="btn btn-primary">Leia mais</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   
+    <footer class="bg-dark text-light py-4">
+        <div class="container text-center">
+            <p>2024 Guerreiro NEWS. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
