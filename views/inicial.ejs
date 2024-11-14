@@ -37,46 +37,57 @@
         </div>
     </section>
 
-    
-    <section class="container my-5">
-        <div class="row">
-            
-            <div class="col-md-4">
-                <div class="card mb-4">
-                    <img src="https://preview.redd.it/w0gtusrrm2751.jpg?auto=webp&s=63acad28772f5546967625430d4881bc0b0de6f0" height="300px" width="200px" class="card-img-top" alt="Imagem da notícia 1">
-                    <div class="card-body">
-                        <h5 class="card-title"><%= news[0].titulo %></h5>
-                        <a href="/guerreironews/todas/<%=news[0].id%>" class="btn btn-primary">Leia mais</a>
-                    </div>
-                </div>
-            </div>
-
-            
-            <div class="col-md-4">
-                <div class="card mb-4">
-                    <img src="https://sampi.net.br/dir-arquivo-imagem/2017/01/20170131153512_35925475.jpg" height="300px" width="200px" class="card-img-top" alt="Imagem da notícia 2">
-                    <div class="card-body">
-                        <h5 class="card-title"><%= news[1].titulo %></h5>
-                
-                        <a href="/guerreironews/todas/<%=news[1].id%>" class="btn btn-primary">Leia mais</a>
-                    </div>
-                </div>
-            </div>
-
-            
-            <div class="col-md-4">
-                <div class="card mb-4">
-                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiA6m9_wFHNcssjfks30M83kV0xUKJrWQ6OKBqK8yawyfLgAD5LyWADLX2pneYECvIxNWsEgfAILM-yVfnpj8oSoaMhsFHKYjt3iIin7dFG_oK3-idZn3uLcuSr1dKkFIdPFZE7NO9k5QE/w1200-h630-p-k-no-nu/_Clientes+Insatisfeitos.jpg"  height="300px" width="200px" class="card-img-top" alt="Imagem da notícia 3">
-                    <div class="card-body">
-                        <h5 class="card-title"><%= news[2].titulo %></h5>
-                        <a href="/guerreironews/todas/<%=news[2].id%>" class="btn btn-primary">Leia mais</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
    
+
+    <div id="carouselExampleDark" class="carousel carousel-dark slide">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active" data-bs-interval="10000">
+            <a href="/guerreironews/todas/<%=news[0].id%>">
+              <img src="https://www.zanotti.com.br/blog/wp-content/uploads/2014/06/Vogue-Espana-Cristiano-Ronaldo-Irina-Shayk-08.jpg" class="d-block w-100" alt="Imagem 1">
+            </a>
+            <div class="carousel-caption d-none d-md-block">
+              <h1 style="background-color: lightgray; border-radius: 10px; padding: 10px;">
+                <%= news[0].titulo %>
+              </h1>
+            </div>
+          </div>
+          <div class="carousel-item" data-bs-interval="2000">
+            <a href="/guerreironews/todas/<%=news[1].id%>">
+              <img src="https://cirandapoetrix.com.br/storage/00dpuz6TUWxscJIgSdbsleBDbsEpRWJ3Xm9HPTKf.jpeg" class="d-block w-100" alt="Imagem 2">
+            </a>
+            <div class="carousel-caption d-none d-md-block">
+              <h1 style="background-color: lightgray; border-radius: 10px; padding: 10px;">
+                <%= news[1].titulo %>
+              </h1>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <a href="/guerreironews/todas/<%=news[2].id%>">
+              <img src="https://s3.sa-east-1.amazonaws.com/assets.fidelizii.com.br/blog/2022/05/04182635/cliente-insatisfeito-como-lidar-2.jpg" class="d-block w-100" alt="Imagem 3">
+            </a>
+            <div class="carousel-caption d-none d-md-block">
+              <h1 style="background-color: lightgray; border-radius: 10px; padding: 10px;">
+                <%= news[2].titulo %>
+              </h1>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+      
+    
     <footer class="bg-dark text-light py-4">
         <div class="container text-center">
             <p>2024 Guerreiro NEWS. Todos os direitos reservados.</p>
