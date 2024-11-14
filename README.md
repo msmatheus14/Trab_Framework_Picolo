@@ -4,14 +4,11 @@ Trabalho realizado pelo discente Matheus Andrade na disciplina de Framework de a
 
 ## Rotas:
 
-localhost:3000/guerreironews 
-**Página inicial**: Apresentação incial com as princi.
+localhost:3000/guerreironews - Apresentação inicial.
 
-localhost:3000/guerreironews/todas 
-**Todas as notícias**: Página com uma lista de todas as notícias.
+localhost:3000/guerreironews/todas - Página com uma lista de todas as notícias.
 
-localhost:3000/guerreironews/todas/:id
-- **Detalhe de notícia**: Visualização de uma notícia específica.
+localhost:3000/guerreironews/todas/:id - Visualização de uma notícia específica.
 
 ### Manual
 
