@@ -23,6 +23,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/guerreironews/todas">Todas as Notícias</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/guerreironews/criarNoticia">Criar Noticia</a>
+                    </li>
                     
                 </ul>
             </div>
@@ -41,18 +44,30 @@
     <section class="container my-5">
       <div class="row">
         
-        <% news.forEach(function(noticia) { %>
-          
-          <div class="col-md-4">
-              <div class="card mb-4">
-                  <div class="card-body">
-                      <h5 class="card-title"><%= noticia.titulo %></h5>
-                      <a href="/guerreironews/todas/<%=noticia.id%>" class="btn btn-primary">Leia mais</a>
-                  </div>
-              </div>
-          </div>
-  
+        <% array.forEach(function(noticia) { %>
+            <div class="col-md-4 mb-4">
+               
+                <a href="/guerreironews/todas/<%= noticia.id %>" class="card h-100 text-decoration-none text-dark">
+                  
+                    <div class="card-body">
+                        <h5 class="card-title"><%= noticia.titulo %></h5>
+                        <p><%= noticia.descricao %></p> 
+                    </div>
+        
+                   
+                    <div class="card-footer text-muted d-flex justify-content-between align-items-center">
+                        <p class="mb-0"><strong>Autor:</strong> <%= noticia.autor %></p>
+                        <p class="mb-0"><strong>Data:</strong> <%= noticia.data %></p>
+                        <p class="mb-0"><strong>Categoria:</strong> <%= noticia.categoria.nome %></p>
+                    </div>
+                </a>
+            </div>
         <% }); %>
+        
+          
+          
+          
+          
         
       </div>
   </section>

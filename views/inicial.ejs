@@ -23,6 +23,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/guerreironews/todas">Todas as Notícias</a>
                     </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="/guerreironews/criarNoticia">Criar Noticia</a>
+                  </li>
                     
                 </ul>
             </div>
@@ -37,56 +40,6 @@
         </div>
     </section>
 
-   
-
-    <div id="carouselExampleDark" class="carousel carousel-dark slide">
-        <div class="carousel-indicators">
-          <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
-          <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
-        </div>
-        <div class="carousel-inner">
-          <div class="carousel-item active" data-bs-interval="10000">
-            <a href="/guerreironews/todas/<%=news[0].id%>">
-              <img src="https://www.zanotti.com.br/blog/wp-content/uploads/2014/06/Vogue-Espana-Cristiano-Ronaldo-Irina-Shayk-08.jpg" class="d-block w-100" alt="Imagem 1">
-            </a>
-            <div class="carousel-caption d-none d-md-block">
-              <h1 style="background-color: lightgray; border-radius: 10px; padding: 10px;">
-                <%= news[0].titulo %>
-              </h1>
-            </div>
-          </div>
-          <div class="carousel-item" data-bs-interval="2000">
-            <a href="/guerreironews/todas/<%=news[1].id%>">
-              <img src="https://cirandapoetrix.com.br/storage/00dpuz6TUWxscJIgSdbsleBDbsEpRWJ3Xm9HPTKf.jpeg" class="d-block w-100" alt="Imagem 2">
-            </a>
-            <div class="carousel-caption d-none d-md-block">
-              <h1 style="background-color: lightgray; border-radius: 10px; padding: 10px;">
-                <%= news[1].titulo %>
-              </h1>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <a href="/guerreironews/todas/<%=news[2].id%>">
-              <img src="https://s3.sa-east-1.amazonaws.com/assets.fidelizii.com.br/blog/2022/05/04182635/cliente-insatisfeito-como-lidar-2.jpg" class="d-block w-100" alt="Imagem 3">
-            </a>
-            <div class="carousel-caption d-none d-md-block">
-              <h1 style="background-color: lightgray; border-radius: 10px; padding: 10px;">
-                <%= news[2].titulo %>
-              </h1>
-            </div>
-          </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-      </div>
-      
     
     <footer class="bg-dark text-light py-4">
         <div class="container text-center">

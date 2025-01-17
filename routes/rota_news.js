@@ -1,6 +1,9 @@
 const express = require ('express')
 const router = express.Router()
-const {buscartodas} = require('../controller/news_controller')
+
+const {buscartodas} = require('../controller/todasNoticiasController')
+
+
 
 router.get ('/guerreironews/todas', buscartodas)
 

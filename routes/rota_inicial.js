@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 
-const {inicial} = require('../controller/news_controller')
+const {inicial} = require('../controller/paginaInicialController')
 
 router.get('/guerreironews', inicial)
 

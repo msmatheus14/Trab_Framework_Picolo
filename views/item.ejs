@@ -8,6 +8,7 @@
 </head>
 <body class="d-flex flex-column min-vh-100">
 
+    
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
             <a class="navbar-brand" href="#">GUERREIRO NEWS</a>
@@ -27,22 +28,69 @@
         </div>
     </nav>
 
+    
     <section class="container my-5 flex-grow-1">
         <div class="row justify-content-center">
             <div class="col-md-10">
                 <div class="card mb-4 shadow-lg border-0 bg-light">
                     <div class="card-body p-5">
-                        
                         <h2 class="card-title display-5 fw-bold text-primary mb-4"><%= ni.titulo %></h2>
-                        
                         <p class="card-text text-secondary fs-5 mb-4"><%= ni.descricao %></p>
+                        <p class="text-muted mb-3">
+                            <strong>Autor:</strong> <%= ni.autor %> <br>
+                            <strong>Data de Publicação:</strong> <%= ni.data_publicacao %> <br>
+                            <strong>Categoria:</strong> <%= ni.categoria.nome %>
+                        </p>
+                        <div class="border-top pt-4">
+                            <p class="card-text fs-5 text-dark">
+                                <%= ni.conteudo %>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="card shadow-lg border-0 bg-light">
+                    <div class="card-body p-4">
+                        <h3 class="fw-bold text-primary mb-4">Comentários</h3>
+
                         
+                        <div id="comentarios">
+                           
+                           <% if (comentariosNoticia && comentariosNoticia.length > 0) { %>
+                            <div id="comentarios">
+                                <% comentariosNoticia.forEach(comentario => { %>
+                                    <div class="mb-3">
+                                        <p class="mb-1"><strong><%= comentario.autor %></strong> - <span class="text-muted"><%= comentario.data %></span></p>
+                                        <p class="mb-0"><%= comentario.comentario %></p>
+                                        
+                                    </div>
+                                <% }) %>
+                            </div>
+                        <% } %>
+                        
+
+                        </div>
+
+                        <form action="/guerreironews/todas/:id" method="POST">
+                            <div class="mb-3">
+                                <label for="usuario" class="form-label">Seu Nome</label>
+                                <input type="text" class="form-control" id="nome" name="nome" placeholder="Digite seu nome" required>
+                            </div>
+                            <input type="hidden" name="idNoticia" value= <%= ni.id %>>
+                            <div class="mb-3">
+                                <label for="comentario" class="form-label">Comente aqui Guerreiro!</label>
+                                <textarea class="form-control" id="comentario" name="comentario" rows="4" placeholder="Digite seu comentário aqui" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Enviar Comentário</button>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+    
     <footer class="bg-dark text-light py-4 mt-auto">
         <div class="container text-center">
             <p>2024 Guerreiro NEWS. Todos os direitos reservados.</p>
@@ -52,3 +100,4 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+ 
