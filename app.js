@@ -5,6 +5,7 @@ const path = require('path')
 
 const rotaNoticias = require('./routes/rotaNoticias')
 const rotaComentarios = require('./routes/rotaComentarios')
+const rotaLogs = require('./routes/rotaLogs')
 
 
 const { url } = require('inspector')
@@ -16,6 +17,7 @@ app.use(express.urlencoded({extended: true}))
 
 app.use('/', rotaNoticias)
 app.use('/', rotaComentarios)
+app.use('/', rotaLogs)
 
 
 

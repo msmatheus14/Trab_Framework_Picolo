@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize')
 const database = require('../db')
+const NoticiaObserver = require('../observers/noticiaObserver')
 
 const Noticia = database.define ('noticias', 
 
@@ -10,11 +11,11 @@ const Noticia = database.define ('noticias',
       type: Sequelize.INTEGER,
       autoIncrement: true,  
       primaryKey: true,
-
+ 
     },
 
     titulo: {
-
+  
       type: Sequelize.STRING(255), 
       allowNull: false,
 
@@ -50,6 +51,20 @@ const Noticia = database.define ('noticias',
       allowNull: true,   
 
     },
+    tipo: {
+
+      type: Sequelize.INTEGER,
+      allowNull: true,
+
+    },
   })
+
+  Noticia.addHook('afterCreate', (noticia, options) => {
+    NoticiaObserver.onNoticiaCriada(noticia);
+  });
+  
+  Noticia.addHook('afterDestroy', (noticia, options) => {
+    NoticiaObserver.onNoticiaExcluida(noticia);
+  });
  
-module.exports = Noticia
+module.exports = Noticia  

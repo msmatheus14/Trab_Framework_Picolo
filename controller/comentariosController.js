@@ -14,6 +14,7 @@ const criarComentario = (req, res) =>{
     let idNoticia = req.body.idNoticia
 
     let comentarioNovo = new Comentario()
+    
     comentarioNovo.criarComentario(data2, comentario, autor, idNoticia)
 
     res.redirect('back')

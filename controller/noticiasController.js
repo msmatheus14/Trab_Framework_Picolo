@@ -1,13 +1,14 @@
-const {Noticia} = require('../model/noticiasModel.js')
+const fabricaNoticia = require('../model/noticiasModel.js')
 const {Comentario} = require('../model/comentariosModel.js')
-const e = require('express')
+const log = require('../model/logModel.js')
+
 
 
 const paginaCriarNoticia = function(req, res) {
-    res.render('criarNoticia')
+    res.render('paginaCriarNoticia')
 }
 
-const criarNoticia = function(req, res) {
+const criarNoticia = function(req, res) { 
 
     let titulo = req.body.titulo
     let local = req.body.local
@@ -15,11 +16,11 @@ const criarNoticia = function(req, res) {
     let descricao = req.body.descricao
     let data = req.body.data
     let categoria = req.body.categoria
-
-    console.log(categoria)
+    let tipo = req.body.tipo
+    
+    console.log(typeof(tipo))  
  
-    let noticia = new Noticia()
-    noticia.criarNoticia(titulo, local, autor, descricao, data, categoria)
+    fabricaNoticia.criarNoticia(titulo, local, autor, descricao, data, categoria,tipo)
 
     res.redirect('/guerreironews/todas') 
     
@@ -28,10 +29,10 @@ const criarNoticia = function(req, res) {
 const paginaItemNoticia = async function(req, res) {
 
     let id = req.params.id
-    id = parseInt(id)
+    id = parseInt(id)  
 
-    let news = new Noticia()
-    let dados = await  news.retornarTodasNoticias()
+    
+    let dados = await  fabricaNoticia.retornarTodasNoticias()
 
 
     let comentarios = new Comentario()
@@ -48,7 +49,7 @@ const paginaItemNoticia = async function(req, res) {
            
             if(id == ni.id){ 
                 let ni = dados[index]  
-                res.render('item',{ni, comentariosNoticia})  
+                res.render('paginaItemNoticia',{ni, comentariosNoticia})  
             }
         }) 
         
@@ -74,45 +75,46 @@ const paginaItemNoticia = async function(req, res) {
             
             if(id == ni.id){ 
                 let ni = dados[index]  
-                res.render('item',{ni,comentariosNoticia})  
+                res.render('paginaItemNoticia',{ni, comentariosNoticia})  
             }
         }) 
 
     }
-
-
-    
+ 
 } 
 
-const paginaInicial =  function (req, res){ 
+const paginaInicial = async function (req, res){ 
     
-    let dados = new Noticia()
-    let array = dados.retornarTodasNoticias()
-    res.render('inicial', {array})
-} 
+    let logs = await log.retornarTodosLogs() 
 
+    let array =  await fabricaNoticia.retornarNoticiaTipo('1')
+
+    console.log(array)
+    
+    res.render('paginaInicial', {array, logs})
+}  
+  
 
 const paginaTodasNoticias = async function (req, res) {
 
-    let dados = new Noticia();
-    let array = await dados.retornarTodasNoticias();
+    let array = await fabricaNoticia.retornarTodasNoticias( ['id', 'titulo', 'local', 'autor', 'descricao', 'data', 'categoria']);
 
-    
-     await res.render('todasnoticias', { array });
-    
+     await res.render('paginaTodasNoticias', { array });
+     
 }
 
 const excluirNoticia = async function(req, res) {
 
     let id = req.params.id
+
     id = parseInt(id)
 
-    let noticia = new Noticia()
-    await noticia.excluirNoticia(id)
+    await fabricaNoticia.excluirNoticia(id)
 
     res.redirect('/guerreironews/todas')
 
    
 }
- 
+
+
 module.exports = {paginaCriarNoticia, criarNoticia, paginaItemNoticia, paginaInicial, paginaTodasNoticias, excluirNoticia} 

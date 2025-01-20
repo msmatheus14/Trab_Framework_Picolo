@@ -46,13 +46,7 @@ class Comentario {
             console.error('Erro ao criar comentário:')
         }
 
-       
     }
-
-   
-
-    // Métodos getters
-   
 
     getData() {
         return this.#data
@@ -67,9 +61,7 @@ class Comentario {
         return this.#autor
     }
 
-    // Métodos setters
     
-
     setData(data) {
         this.#data = data
     }
@@ -121,9 +113,6 @@ class Comentario {
             console.log(error)
         }
     }   
-
-     
-   
 
     
 }
