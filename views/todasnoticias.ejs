@@ -42,35 +42,33 @@
 
     
     <section class="container my-5">
-      <div class="row">
-        
-        <% array.forEach(function(noticia) { %>
-            <div class="col-md-4 mb-4">
-               
-                <a href="/guerreironews/todas/<%= noticia.id %>" class="card h-100 text-decoration-none text-dark">
-                  
-                    <div class="card-body">
-                        <h5 class="card-title"><%= noticia.titulo %></h5>
-                        <p><%= noticia.descricao %></p> 
-                    </div>
-        
+        <div class="row">
+            
+            <% array.forEach(function(noticia) { %>
+                <div class="col-md-4 mb-4 position-relative">
+                    
                    
-                    <div class="card-footer text-muted d-flex justify-content-between align-items-center">
-                        <p class="mb-0"><strong>Autor:</strong> <%= noticia.autor %></p>
-                        <p class="mb-0"><strong>Data:</strong> <%= noticia.data %></p>
-                        <p class="mb-0"><strong>Categoria:</strong> <%= noticia.categoria.nome %></p>
-                    </div>
-                </a>
-            </div>
-        <% }); %>
-        
-          
-          
-          
-          
-        
-      </div>
-  </section>
+                    <a href="/guerreironews/excluir/<%= noticia.id %>" class="btn btn-danger position-absolute top-0 end-0 m-2" title="Excluir">
+                        
+                    </a>
+                    
+                    <a href="/guerreironews/todas/<%= noticia.id %>" class="card h-100 text-decoration-none text-dark">
+                        <div class="card-body">
+                            <h5 class="card-title"><%= noticia.titulo %></h5>
+                            <p><%= noticia.descricao %></p> 
+                        </div>
+    
+                        <div class="card-footer text-muted d-flex justify-content-between align-items-center">
+                            <p class="mb-0"><strong>Autor:</strong> <%= noticia.autor %></p>
+                            <p class="mb-0"><strong>Data:</strong> <%= noticia.data %></p>
+                            <p class="mb-0"><strong>Categoria:</strong> <%= noticia.categoria %></p>
+                        </div>
+                    </a>
+                </div>
+            <% }); %>
+        </div>
+    </section>
+    
 
    
     <footer class="bg-dark text-light py-4">

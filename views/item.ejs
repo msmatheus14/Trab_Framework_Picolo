@@ -57,12 +57,15 @@
                         
                         <div id="comentarios">
                            
-                           <% if (comentariosNoticia && comentariosNoticia.length > 0) { %>
+                           <% if (comentariosNoticia != null && comentariosNoticia != undefined) { %>
                             <div id="comentarios">
                                 <% comentariosNoticia.forEach(comentario => { %>
                                     <div class="mb-3">
                                         <p class="mb-1"><strong><%= comentario.autor %></strong> - <span class="text-muted"><%= comentario.data %></span></p>
                                         <p class="mb-0"><%= comentario.comentario %></p>
+                                        <p><form action="/guerreironews/excluircomentario/<%= comentario.id %>" method="POST" class="mt-2">
+                                            <button type="submit" class="btn btn-danger btn-sm">Excluir</button>
+                                        </form></p>
                                         
                                     </div>
                                 <% }) %>

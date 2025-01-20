@@ -1,18 +1,15 @@
-const {Comentario} = require('../model/comentario_model.js')
+const {Comentario} = require('../model/comentariosModel.js')
 
 const criarComentario = (req, res) =>{ 
 
-    //adicionei a data e hora do sistema para ser gravada no comentário
 
     const data = new Date();
     const dataHora = data.toISOString().slice(0, 19).replace("T", " ");
     
-   
-    
     let data2 = dataHora
 
     let comentario = req.body.comentario
-    let autor = req.body.nome
+    let autor = req.body.nome  
 
     let idNoticia = req.body.idNoticia
 
@@ -21,9 +18,22 @@ const criarComentario = (req, res) =>{
 
     res.redirect('back')
 
-
 } 
 
+const excluirComentario = async (req, res) =>{
+
+    let id = req.params.id
+    id = parseInt(id)    
+
+    let comentario = new Comentario()
+    let dados = await comentario.retornarTodosComentarios()
+
+    await comentario.excluirComentario(id)
+
+    res.redirect('back')
+
+}
 
 
-module.exports = {criarComentario}
+
+module.exports = {criarComentario, excluirComentario}
