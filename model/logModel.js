@@ -5,6 +5,7 @@ class Log {
         
     }
 
+
    async retornarTodosLogs() {
         const log = await logDB.findAll({
             attributes: ['id', 'descricao', 'tipo', 'data']
@@ -13,6 +14,16 @@ class Log {
         const logList = log.map(log => log.get({ plain: true }))
 
         return logList 
+    }
+
+    async criarLog(descricao){
+
+        await logDB.create ({
+
+            descricao: descricao,
+            tipo: 'INFO'
+
+        })
     }
 
     async excluirTodosLogs() {

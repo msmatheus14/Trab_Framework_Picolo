@@ -1,5 +1,6 @@
 
 const Log = require('../model/logModel')
+
 const excluirTodosLogs = async (req, res) => {
 
     

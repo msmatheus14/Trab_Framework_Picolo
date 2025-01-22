@@ -1,6 +1,6 @@
-const { Sequelize} = require('sequelize');
-const database = require('../db');
-const Noticia = require('./noticiaDB'); 
+const { Sequelize} = require('sequelize')
+const database = require('../db')
+const Noticia = require('./noticiaDB') 
 
 const Comentario = database.define('Comentarios', {
 
@@ -39,7 +39,7 @@ const Comentario = database.define('Comentarios', {
 }, {
     tableName: 'comentarios',  
     timestamps: true,          
-});
+})
 
 
 Comentario.belongsTo(Noticia, {
@@ -50,4 +50,4 @@ Comentario.belongsTo(Noticia, {
 
 
 
-module.exports = Comentario; 
+module.exports = Comentario 
