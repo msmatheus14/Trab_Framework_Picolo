@@ -21,7 +21,7 @@ class Log {
         await logDB.create ({
 
             descricao: descricao,
-            tipo: 'INFO'
+            tipo: 'INFO' 
 
         })
     }

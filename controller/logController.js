@@ -9,5 +9,6 @@ const excluirTodosLogs = async (req, res) => {
     res.redirect('/guerreironews')
 
 }
+
  
 module.exports = {excluirTodosLogs}

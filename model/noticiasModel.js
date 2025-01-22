@@ -205,13 +205,19 @@ class FabricaNoticia {
 
      criarNoticia(titulo, local, autor, descricao, data, categoria, tipo) {
 
+
         console.log(titulo, local, autor, descricao, data, categoria, tipo)
         if(tipo == '1'){
+
             console.log('1')
+
             return new NoticiaUrgente(titulo, local, autor, descricao, data, categoria, tipo)
         }else
+
         if(tipo == '2'){  
+
             console.log('2')
+            
             return new NoticiaNormal(titulo, local, autor, descricao, data, categoria, tipo)
         }
     }

@@ -11,7 +11,7 @@
     
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="#">GUERREIRO NEWS</a>
+            <a class="navbar-brand" href="/guerreironews">GUERREIRO NEWS</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -22,6 +22,9 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/guerreironews/todas">Todas as Notícias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/guerreironews/criarNoticia">Criar Noticia</a>
                     </li>
                 </ul>
             </div>
@@ -38,8 +41,8 @@
                         <p class="card-text text-secondary fs-5 mb-4"><%= ni.descricao %></p>
                         <p class="text-muted mb-3">
                             <strong>Autor:</strong> <%= ni.autor %> <br>
-                            <strong>Data de Publicação:</strong> <%= ni.data_publicacao %> <br>
-                            <strong>Categoria:</strong> <%= ni.categoria.nome %>
+                            <strong>Data de Publicação:</strong> <%= ni.data %> <br>
+                            <strong>Categoria:</strong> <%= ni.categoria %>
                         </p>
                         <div class="border-top pt-4">
                             <p class="card-text fs-5 text-dark">
@@ -96,7 +99,7 @@
     
     <footer class="bg-dark text-light py-4 mt-auto">
         <div class="container text-center">
-            <p>2024 Guerreiro NEWS. Todos os direitos reservados.</p>
+            <p>2025 Guerreiro NEWS. Marca Registrada!</p>
         </div>
     </footer>
 
