@@ -1,17 +1,20 @@
 
-const Log  = require('../model/logModel')
+const {Log}  = require('../model/logModel')
+const logDB = require('../model/DB/logDB')
+
+const log = new Log(logDB)
 
 class NoticiaObserver {
   
   async onNoticiaCriada(noticia) {
 
-      await Log.criarLog(`Noticia criada: ${noticia.titulo}`)
+      await log.criarLog(`Noticia criada: ${noticia.titulo}`)
 
   }
 
   async onNoticiaExcluida(noticia) {
 
-    await Log.criarLog(`Noticia excluida: ${noticia.titulo}`)
+    await log.criarLog(`Noticia excluida: ${noticia.titulo}`)
   }
 }
 

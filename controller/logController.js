@@ -1,14 +1,26 @@
 
-const Log = require('../model/logModel')
+const logDB = require('../model/DB/logDB')
+const {Log} = require('../model/logModel')
+
+log = new Log(logDB)
+
+
+const paginaLog = async (req, res) => {
+
+    let logs = await log.retornarTodosLogs() 
+
+    res.render('paginaLog', {logs})
+
+}
 
 const excluirTodosLogs = async (req, res) => {
 
     
-    await Log.excluirTodosLogs()
+    await log.excluirTodosLogs()
 
-    res.redirect('/guerreironews')
+    res.redirect('/guerreironews/logs')
 
 }
 
  
-module.exports = {excluirTodosLogs}
+module.exports = {excluirTodosLogs, paginaLog}

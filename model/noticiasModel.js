@@ -1,11 +1,10 @@
-const database = require('../db')
-const NoticiaDB = require('./DB/noticiaDB')
-
-
 class Noticia {
     
 
     constructor(){
+
+        this.database = null
+        this.NoticiaDB = null
 
         this.id = null
         this.titulo = null
@@ -17,6 +16,7 @@ class Noticia {
         this.tipo = null
 
         if(new.target === Noticia){
+
             throw new TypeError("Não é permitido instanciar uma classe abstrata")
         }
 
@@ -58,9 +58,6 @@ class Noticia {
 
     }
         
-
-
-
     setTitulo(titulo) {
 
         this.titulo = titulo
@@ -102,8 +99,12 @@ class Noticia {
 class NoticiaUrgente extends Noticia {
 
     
-    constructor( titulo, local, autor, descricao, data, categoria, tipo) {
+    constructor( database, NoticiaDB, titulo, local, autor, descricao, data, categoria, tipo) {
+
         super()
+
+        this.database = database
+        this.NoticiaDB = NoticiaDB
 
         this.setTitulo(titulo)
         this.setLocal(local) 
@@ -122,10 +123,10 @@ class NoticiaUrgente extends Noticia {
         
         try {
            
-            await database.sync()
+            await this.database.sync()
     
             
-            const obj = await NoticiaDB.create({
+            const obj = await this.NoticiaDB.create({
 
                 titulo: this.getTitulo(),
                 local: this.getLocal(),
@@ -155,8 +156,12 @@ class NoticiaUrgente extends Noticia {
 class NoticiaNormal extends Noticia {
 
 
-        constructor( titulo, local, autor, descricao, data, categoria, tipo) {
+        constructor(database, NoticiaDB, titulo, local, autor, descricao, data, categoria, tipo) {
+
             super()
+
+            this.database = database
+            this.NoticiaDB = NoticiaDB
 
             this.setTitulo(titulo)
             this.setLocal(local) 
@@ -175,10 +180,10 @@ class NoticiaNormal extends Noticia {
             
             try {
                
-                await database.sync()
+                await this.database.sync()
         
                 
-                const obj = await NoticiaDB.create({
+                const obj = await this.NoticiaDB.create({
     
                     titulo: this.getTitulo(),
                     local: this.getLocal(),
@@ -203,32 +208,36 @@ class NoticiaNormal extends Noticia {
 
 class FabricaNoticia {
 
+
+    constructor(database, NoticiaDB) {
+        
+        this.database = database
+        this.NoticiaDB = NoticiaDB
+    }
+
      criarNoticia(titulo, local, autor, descricao, data, categoria, tipo) {
 
 
-        console.log(titulo, local, autor, descricao, data, categoria, tipo)
         if(tipo == '1'){
 
-            console.log('1')
-
-            return new NoticiaUrgente(titulo, local, autor, descricao, data, categoria, tipo)
+            return new NoticiaUrgente(this.database, this.NoticiaDB, titulo, local, autor, descricao, data, categoria, tipo)
         }else
+        
 
         if(tipo == '2'){  
 
-            console.log('2')
-            
-            return new NoticiaNormal(titulo, local, autor, descricao, data, categoria, tipo)
+            return new NoticiaNormal(this.database, this.NoticiaDB, titulo, local, autor, descricao, data, categoria, tipo)
         }
     }
 
     async retornarTodasNoticias() {
+
         try {
             
-            await database.sync()
+            await this.database.sync()
     
             
-            const noticias = await NoticiaDB.findAll({
+            const noticias = await this.NoticiaDB.findAll({
                 attributes: ['id', 'titulo', 'local', 'autor', 'descricao', 'data', 'categoria', 'tipo']
             })
             
@@ -237,6 +246,7 @@ class FabricaNoticia {
             return noticiasList
     
         } catch (error) {
+
             console.error('Erro ao retornar notícias:', error) 
             
         }
@@ -246,14 +256,17 @@ class FabricaNoticia {
 
         try {
             
-            await database.sync()
+            await this.database.sync()
     
-            const noticia = await NoticiaDB.findByPk(id)
+            const noticia = await this.NoticiaDB.findByPk(id)
     
             if (!noticia) {
+
                 console.log('Notícia não encontrada')
+
                 return false
             }else
+            
             {
                 await noticia.destroy()
     
@@ -264,7 +277,6 @@ class FabricaNoticia {
         } catch (error) {
 
             console.error('Erro ao excluir noticia:', error.message) 
-            console.error(error.stack) 
         }
     }
 
@@ -272,11 +284,13 @@ class FabricaNoticia {
 
         try {
             
-            await database.sync()
+            await this.database.sync()
     
             
-            const noticias = await NoticiaDB.findAll({
+            const noticias = await this.NoticiaDB.findAll({
+
                 attributes: ['id', 'titulo', 'local', 'autor', 'descricao', 'data', 'categoria', 'tipo'],
+
                 where: {
                     tipo: tipo
                 }
@@ -287,6 +301,7 @@ class FabricaNoticia {
             return noticiasList
     
         } catch (error) {
+
             console.error('Erro ao retornar notícias:', error) 
             
         }
@@ -294,4 +309,4 @@ class FabricaNoticia {
 
 }
 
-    module.exports = new FabricaNoticia() 
+    module.exports = {FabricaNoticia}

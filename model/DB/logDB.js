@@ -33,4 +33,4 @@ const Log = database.define('logs', {
 
 Log.sync({ alter: true });
 
-module.exports = Log;
+module.exports = Log

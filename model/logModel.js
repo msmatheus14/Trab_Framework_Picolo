@@ -1,24 +1,50 @@
-const logDB = require('../model/DB/logDB');
 
 class Log {
-    constructor() {
+
+    constructor(logDB) {
+
+        this.logDB = logDB
         
     }
 
 
-   async retornarTodosLogs() {
-        const log = await logDB.findAll({
+   async retornarTodosLogs(quant) {
+
+    if (arguments.length === 0){
+
+        const log = await this.logDB.findAll({
+
             attributes: ['id', 'descricao', 'tipo', 'data']
+
         })
 
         const logList = log.map(log => log.get({ plain: true }))
 
-        return logList 
+        return logList
+
     }
+    else
+
+    {
+
+        const log = await this.logDB.findAll({
+
+            attributes: ['id', 'descricao', 'tipo', 'data']
+
+        })
+
+        const logList = log.map(log => log.get({ plain: true }))
+        const logListQuant = logList.slice(-quant)
+
+        return logListQuant
+
+         
+    }
+}
 
     async criarLog(descricao){
 
-        await logDB.create ({
+        await this.logDB.create ({
 
             descricao: descricao,
             tipo: 'INFO' 
@@ -27,11 +53,13 @@ class Log {
     }
 
     async excluirTodosLogs() {
-        await logDB.destroy({
+
+        await this.logDB.destroy({
+
             where: {},
             truncate: true
         })
     }       
 }
 
-module.exports = new Log()
+module.exports = {Log}

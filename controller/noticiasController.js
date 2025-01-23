@@ -1,12 +1,24 @@
-const fabricaNoticia = require('../model/noticiasModel.js')
+const {FabricaNoticia} = require('../model/noticiasModel.js')
+const {Log} = require('../model/logModel.js')
 const {Comentario} = require('../model/comentariosModel.js')
-const log = require('../model/logModel.js')
+
+const NoticiaDB = require('../model/DB/noticiaDB.js')
+const comentarioDB = require('../model/DB/comentarioDB.js')
+const logDB = require('../model/DB/logDB.js')
+
+const database = require('../db.js')
+
+//Utilizei o principio de designer de IoC através do método de injeção de dependências
+
+const fabricaNoticia = new FabricaNoticia(database, NoticiaDB)
+let comentarios = new Comentario(database, comentarioDB)
+let log = new Log(logDB)
 
 
+const paginaCriarNoticia = async function(req, res) {
 
-const paginaCriarNoticia = function(req, res) {
-    res.render('paginaCriarNoticia')
-}
+    res.render('paginaCriarNoticia', )
+}   
 
 const criarNoticia = function(req, res) { 
 
@@ -31,17 +43,12 @@ const paginaItemNoticia = async function(req, res) {
     let id = req.params.id
     id = parseInt(id)  
 
-    
     let dados = await  fabricaNoticia.retornarTodasNoticias()
 
-
-    let comentarios = new Comentario()
-    
     let dadosComentarios = await comentarios.retornarTodosComentarios()
     
     if(dadosComentarios == null || dadosComentarios == undefined || dadosComentarios.length == 0){
 
-        console.log('Não há comentários')
         let comentariosNoticia = null
 
         dados.map((ni,index) => {
@@ -85,19 +92,17 @@ const paginaItemNoticia = async function(req, res) {
 
 const paginaInicial = async function (req, res){ 
     
-    let logs = await log.retornarTodosLogs() 
-
+    let logs = await log.retornarTodosLogs(2)
+    
     let array =  await fabricaNoticia.retornarNoticiaTipo('1')
 
-    console.log(array)
-    
     res.render('paginaInicial', {array, logs})
 }  
   
 
 const paginaTodasNoticias = async function (req, res) {
 
-    let array = await fabricaNoticia.retornarTodasNoticias( ['id', 'titulo', 'local', 'autor', 'descricao', 'data', 'categoria']);
+    let array = await fabricaNoticia.retornarTodasNoticias();
 
      await res.render('paginaTodasNoticias', { array });
      
