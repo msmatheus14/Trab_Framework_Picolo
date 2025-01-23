@@ -1,4 +1,4 @@
-const logDB = require('../model/logDB');
+const logDB = require('../model/DB/logDB');
 
 class Log {
     constructor() {

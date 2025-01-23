@@ -5,17 +5,13 @@ class NoticiaObserver {
   
   async onNoticiaCriada(noticia) {
 
-  
       await Log.criarLog(`Noticia criada: ${noticia.titulo}`)
 
-  
   }
 
-  
   async onNoticiaExcluida(noticia) {
 
     await Log.criarLog(`Noticia excluida: ${noticia.titulo}`)
-    
   }
 }
 

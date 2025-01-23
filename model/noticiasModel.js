@@ -1,5 +1,5 @@
 const database = require('../db')
-const NoticiaDB = require('./noticiaDB')
+const NoticiaDB = require('./DB/noticiaDB')
 
 
 class Noticia {

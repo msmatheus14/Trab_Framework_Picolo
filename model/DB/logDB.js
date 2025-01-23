@@ -1,6 +1,6 @@
 
 const Sequelize = require('sequelize');
-const database = require('../db');
+const database = require('../../db');
 
 const Log = database.define('logs', {
 

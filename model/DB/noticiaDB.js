@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize')
-const database = require('../db')
-const NoticiaObserver = require('../observers/noticiaObserver')
+const database = require('../../db')
+const NoticiaObserver = require('../../observers/noticiaObserver')
 
 const Noticia = database.define ('noticias', 
 
