@@ -65,6 +65,6 @@ const Noticia = database.define ('noticias',
   
   Noticia.addHook('afterDestroy', (noticia) => {
     NoticiaObserver.onNoticiaExcluida(noticia);
-  })
+  }) 
  
 module.exports = Noticia  

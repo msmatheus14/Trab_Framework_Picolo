@@ -37,6 +37,7 @@ const Comentario = database.define('Comentarios', {
 
         onDelete: 'CASCADE',  
     },
+    
 }, {
     tableName: 'comentarios',  
     timestamps: true,          

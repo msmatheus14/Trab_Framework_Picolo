@@ -8,7 +8,7 @@ const logDB = require('../model/DB/logDB.js')
 
 const database = require('../db.js')
 
-//Utilizei o principio de designer de IoC através do método de injeção de dependências
+
 
 const fabricaNoticia = new FabricaNoticia(database, NoticiaDB)
 let comentarios = new Comentario(database, comentarioDB)
