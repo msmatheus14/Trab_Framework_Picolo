@@ -1,3 +1,5 @@
+const noticiaMongoose = require('./DB/noticiaDB')
+
 class Noticia {
     
 
@@ -178,12 +180,7 @@ class NoticiaNormal extends Noticia {
         async criarNoticia() {
             
             
-            try {
-               
-                await this.database.sync()
-        
-                
-                const obj = await this.NoticiaDB.create({
+                    const noticiasalva = new noticiaMongoose ({
     
                     titulo: this.getTitulo(),
                     local: this.getLocal(),
@@ -194,10 +191,16 @@ class NoticiaNormal extends Noticia {
                     tipo: this.getTipo()
     
                 })
+                await noticiasalva.save()
+
     
-                return true
-        
-             } catch (error) {
+            try {
+                
+
+                return json(noticiasalva)
+            } catch (error) {
+
+                console.log(error.message)
     
                return false
                 

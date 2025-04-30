@@ -2,6 +2,33 @@
 const Sequelize = require('sequelize');
 const database = require('../../db');
 
+const mongoose = require('mongoose')
+
+const logSchema = new mongoose.Schema({
+
+  id: {
+    type: Number,
+    required: true,
+    unique: true
+  },
+
+  descrisao: {
+    type: String,
+    required: true
+  },
+
+  tipo: {
+    type: String,
+    required: true
+  }, 
+
+  data: {
+    type: String,
+    required: true
+  }
+
+})
+
 const Log = database.define('logs', {
 
   id: {
@@ -33,4 +60,6 @@ const Log = database.define('logs', {
 
 Log.sync({ alter: true });
 
-module.exports = Log
+const logMongoose = mongoose.model('log', logSchema)
+
+module.exports = Log, logMongoose

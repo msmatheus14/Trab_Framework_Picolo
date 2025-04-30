@@ -1,6 +1,7 @@
 const {FabricaNoticia} = require('../model/noticiasModel.js')
 const {Log} = require('../model/logModel.js')
 const {Comentario} = require('../model/comentariosModel.js')
+const {comentarioMongoose} = require('../model/comentariosModel.js')
 
 const NoticiaDB = require('../model/DB/noticiaDB.js')
 const comentarioDB = require('../model/DB/comentarioDB.js')

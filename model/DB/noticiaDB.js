@@ -2,6 +2,41 @@ const Sequelize = require('sequelize')
 const database = require('../../db')
 const NoticiaObserver = require('../../observers/noticiaObserver')
 
+const mongoose = require('mongoose')
+
+const noticiaSchema = new mongoose.Schema({
+
+  id:{
+    type: Number,
+    
+  },
+  titulo: {
+    type: String,
+   
+  },
+  local: {
+    type: String,
+    
+
+  },
+  autor: {
+    type: String,
+    
+  },
+  data: {
+    type: String,
+    
+  },
+  categoria: {
+    type: String,
+    
+  },
+  tipo: {
+    type: Number,
+    
+  }
+})
+
 const Noticia = database.define ('noticias', 
 
     {
@@ -66,5 +101,7 @@ const Noticia = database.define ('noticias',
   Noticia.addHook('afterDestroy', (noticia) => {
     NoticiaObserver.onNoticiaExcluida(noticia);
   }) 
+
+const noticiaMongoose = mongoose.model('noticia', noticiaSchema)
  
-module.exports = Noticia  
+module.exports = Noticia, noticiaMongoose

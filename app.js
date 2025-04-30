@@ -1,3 +1,4 @@
+const mong = require('./dbMongose')
 const express = require('express')
 const app = express()
 

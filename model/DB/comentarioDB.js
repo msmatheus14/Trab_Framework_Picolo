@@ -1,7 +1,37 @@
 const { Sequelize} = require('sequelize')
+const mongoose = require('mongoose')
 
 const database = require('../../db')
 const Noticia = require('../DB/noticiaDB') 
+
+const comentarioSchema = new mongoose.Schema ({
+    id: {
+        type: String,
+        required: true,
+        unique: true
+    },
+
+    data: {
+        type: String,
+        required: true,
+    },
+
+    autor: {
+        type: String,
+        required: true,
+
+    },
+    comentario: {
+        type: String,
+        required: true,
+    },
+
+    idNoticia: {
+        type: String,
+        required: true
+    }
+    
+})
 
 const Comentario = database.define('Comentarios', {
 
@@ -50,6 +80,6 @@ Comentario.belongsTo(Noticia, {
     onDelete: 'CASCADE',     
 })
 
+const comentarioMongoose = new mongoose.model ('comentario', comentarioSchema)
 
-
-module.exports = Comentario 
+module.exports = Comentario, comentarioMongoose
